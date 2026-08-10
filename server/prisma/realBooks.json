@@ -1,0 +1,282 @@
+[
+    {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "isbn": "9780743273565",
+        "category": "Classic Literature",
+        "year": 1925
+    },
+    {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "isbn": "9780060935467",
+        "category": "Classic Literature",
+        "year": 1960
+    },
+    {
+        "title": "1984",
+        "author": "George Orwell",
+        "isbn": "9780451524935",
+        "category": "Dystopian",
+        "year": 1949
+    },
+    {
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "isbn": "9780141439518",
+        "category": "Classic Literature",
+        "year": 1813
+    },
+    {
+        "title": "Dune",
+        "author": "Frank Herbert",
+        "isbn": "9780441172719",
+        "category": "Science Fiction",
+        "year": 1965
+    },
+    {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "isbn": "9780345339683",
+        "category": "Fantasy",
+        "year": 1937
+    },
+    {
+        "title": "Fahrenheit 451",
+        "author": "Ray Bradbury",
+        "isbn": "9781451673319",
+        "category": "Dystopian",
+        "year": 1953
+    },
+    {
+        "title": "Brave New World",
+        "author": "Aldous Huxley",
+        "isbn": "9780060850524",
+        "category": "Dystopian",
+        "year": 1932
+    },
+    {
+        "title": "Sapiens",
+        "author": "Yuval Noah Harari",
+        "isbn": "9780062316097",
+        "category": "History",
+        "year": 2011
+    },
+    {
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "isbn": "9780132350884",
+        "category": "Technology",
+        "year": 2008
+    },
+    {
+        "title": "The Pragmatic Programmer",
+        "author": "Andrew Hunt",
+        "isbn": "9780201616224",
+        "category": "Technology",
+        "year": 1999
+    },
+    {
+        "title": "Design Patterns",
+        "author": "Erich Gamma",
+        "isbn": "9780201633610",
+        "category": "Technology",
+        "year": 1994
+    },
+    {
+        "title": "Neuromancer",
+        "author": "William Gibson",
+        "isbn": "9780441569595",
+        "category": "Science Fiction",
+        "year": 1984
+    },
+    {
+        "title": "Foundation",
+        "author": "Isaac Asimov",
+        "isbn": "9780553293357",
+        "category": "Science Fiction",
+        "year": 1951
+    },
+    {
+        "title": "The Martian",
+        "author": "Andy Weir",
+        "isbn": "9780553418026",
+        "category": "Science Fiction",
+        "year": 2011
+    },
+    {
+        "title": "Project Hail Mary",
+        "author": "Andy Weir",
+        "isbn": "9780593135204",
+        "category": "Science Fiction",
+        "year": 2021
+    },
+    {
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "isbn": "9780735211292",
+        "category": "Self Help",
+        "year": 2018
+    },
+    {
+        "title": "Thinking, Fast and Slow",
+        "author": "Daniel Kahneman",
+        "isbn": "9780374533557",
+        "category": "Psychology",
+        "year": 2011
+    },
+    {
+        "title": "Steve Jobs",
+        "author": "Walter Isaacson",
+        "isbn": "9781451648539",
+        "category": "Biography",
+        "year": 2011
+    },
+    {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "isbn": "9780316769488",
+        "category": "Classic Literature",
+        "year": 1951
+    },
+    {
+        "title": "Lord of the Flies",
+        "author": "William Golding",
+        "isbn": "9780399501487",
+        "category": "Classic Literature",
+        "year": 1954
+    },
+    {
+        "title": "Slaughterhouse-Five",
+        "author": "Kurt Vonnegut",
+        "isbn": "9780440180296",
+        "category": "Science Fiction",
+        "year": 1969
+    },
+    {
+        "title": "The Hitchhiker's Guide to the Galaxy",
+        "author": "Douglas Adams",
+        "isbn": "9780345391803",
+        "category": "Science Fiction",
+        "year": 1979
+    },
+    {
+        "title": "Ender's Game",
+        "author": "Orson Scott Card",
+        "isbn": "9780812550702",
+        "category": "Science Fiction",
+        "year": 1985
+    },
+    {
+        "title": "Snow Crash",
+        "author": "Neal Stephenson",
+        "isbn": "9780553380958",
+        "category": "Science Fiction",
+        "year": 1992
+    },
+    {
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "isbn": "9780061122415",
+        "category": "Fantasy",
+        "year": 1988
+    },
+    {
+        "title": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "isbn": "9780544003415",
+        "category": "Fantasy",
+        "year": 1954
+    },
+    {
+        "title": "A Game of Thrones",
+        "author": "George R.R. Martin",
+        "isbn": "9780553103540",
+        "category": "Fantasy",
+        "year": 1996
+    },
+    {
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "author": "J.K. Rowling",
+        "isbn": "9780590353427",
+        "category": "Fantasy",
+        "year": 1997
+    },
+    {
+        "title": "The Name of the Wind",
+        "author": "Patrick Rothfuss",
+        "isbn": "9780756404741",
+        "category": "Fantasy",
+        "year": 2007
+    },
+    {
+        "title": "Educated",
+        "author": "Tara Westover",
+        "isbn": "9780399590504",
+        "category": "Biography",
+        "year": 2018
+    },
+    {
+        "title": "Becoming",
+        "author": "Michelle Obama",
+        "isbn": "9781524763138",
+        "category": "Biography",
+        "year": 2018
+    },
+    {
+        "title": "The Wright Brothers",
+        "author": "David McCullough",
+        "isbn": "9781476728742",
+        "category": "History",
+        "year": 2015
+    },
+    {
+        "title": "Guns, Germs, and Steel",
+        "author": "Jared Diamond",
+        "isbn": "9780393317558",
+        "category": "History",
+        "year": 1997
+    },
+    {
+        "title": "A Brief History of Time",
+        "author": "Stephen Hawking",
+        "isbn": "9780553380163",
+        "category": "Science",
+        "year": 1988
+    },
+    {
+        "title": "Cosmos",
+        "author": "Carl Sagan",
+        "isbn": "9780345331359",
+        "category": "Science",
+        "year": 1980
+    },
+    {
+        "title": "The Selfish Gene",
+        "author": "Richard Dawkins",
+        "isbn": "9780192860927",
+        "category": "Science",
+        "year": 1976
+    },
+    {
+        "title": "Quiet",
+        "author": "Susan Cain",
+        "isbn": "9780307352156",
+        "category": "Psychology",
+        "year": 2012
+    },
+    {
+        "title": "The Power of Habit",
+        "author": "Charles Duhigg",
+        "isbn": "9780812981605",
+        "category": "Self Help",
+        "year": 2012
+    },
+    {
+        "title": "Outliers",
+        "author": "Malcolm Gladwell",
+        "isbn": "9780316017930",
+        "category": "Psychology",
+        "year": 2008
+    }
+]

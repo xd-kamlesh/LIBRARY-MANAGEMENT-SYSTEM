@@ -1,0 +1,226 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = "file:./dev.db"
+}
+
+model User {
+    id        String   @id @default(uuid())
+    name      String
+    email     String   @unique
+    password  String
+    role      String   @default("STUDENT") // STUDENT or LIBRARIAN
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    // Relations
+    borrowRecords   BorrowRecord[]
+    reservations    Reservation[]
+    reviews         Review[]
+    ratings         Rating[]
+    notifications   Notification[]
+    activityLogs    ActivityLog[]
+    readingHistory  ReadingHistory[]
+    wishlist        Wishlist[]
+}
+
+model Book {
+    id              String   @id @default(uuid())
+    title           String
+    subtitle        String?
+    description     String
+    isbn            String   @unique
+    publicationYear Int
+    language        String
+    edition         String?
+    shelfLocation   String
+    availableCopies Int      @default(0)
+    totalCopies     Int      @default(0)
+    coverImage      String
+    popularityScore Float    @default(0.0)
+    averageRating   Float    @default(0.0)
+    reviewCount     Int      @default(0)
+    borrowCount     Int      @default(0)
+    dateAdded       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    // Relations
+    publisherId String?
+    publisher   Publisher? @relation(fields: [publisherId], references: [id])
+    
+    categoryId  String?
+    category    Category?  @relation(fields: [categoryId], references: [id])
+
+    authors         BookAuthor[]
+    copies          BookCopy[]
+    galleryImages   BookImage[]
+    borrowRecords   BorrowRecord[]
+    reservations    Reservation[]
+    reviews         Review[]
+    ratings         Rating[]
+    readingHistory  ReadingHistory[]
+    wishlistedBy    Wishlist[]
+}
+
+model Author {
+    id        String       @id @default(uuid())
+    name      String
+    bio       String?
+    createdAt DateTime     @default(now())
+    books     BookAuthor[]
+}
+
+// Junction table for Many-to-Many Book <-> Author
+model BookAuthor {
+    bookId   String
+    authorId String
+    book     Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    author   Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+    @@id([bookId, authorId])
+}
+
+model Publisher {
+    id        String   @id @default(uuid())
+    name      String
+    location  String?
+    createdAt DateTime @default(now())
+    books     Book[]
+}
+
+model Category {
+    id          String     @id @default(uuid())
+    name        String     @unique
+    description String?
+    parentId    String?
+    parent      Category?  @relation("CategoryToCategory", fields: [parentId], references: [id])
+    children    Category[] @relation("CategoryToCategory")
+    books       Book[]
+    createdAt   DateTime   @default(now())
+}
+
+model BookCopy {
+    id            String    @id @default(uuid())
+    bookId        String
+    book          Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    condition     String    @default("GOOD") // NEW, GOOD, FAIR, POOR, LOST
+    isAvailable   Boolean   @default(true)
+    acquiredDate  DateTime  @default(now())
+    
+    // Relations
+    borrowRecords BorrowRecord[]
+}
+
+model BookImage {
+    id        String   @id @default(uuid())
+    bookId    String
+    book      Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    imageUrl  String
+    caption   String?
+    order     Int      @default(0)
+    createdAt DateTime @default(now())
+}
+
+model BorrowRecord {
+    id         String       @id @default(uuid())
+    userId     String
+    user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+    bookId     String
+    book       Book         @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    copyId     String
+    copy       BookCopy     @relation(fields: [copyId], references: [id])
+    status     String       @default("ACTIVE") // ACTIVE, RETURNED, OVERDUE
+    borrowDate DateTime     @default(now())
+    dueDate    DateTime
+    returnDate DateTime?
+    notes      String?
+}
+
+model Reservation {
+    id             String            @id @default(uuid())
+    userId         String
+    user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+    bookId         String
+    book           Book              @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    status         String            @default("PENDING") // PENDING, FULFILLED, CANCELLED
+    reservationDate DateTime         @default(now())
+    fulfilledDate  DateTime?
+}
+
+model Review {
+    id        String   @id @default(uuid())
+    content   String
+    userId    String
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    bookId    String
+    book      Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Rating {
+    id        String   @id @default(uuid())
+    score     Int      // e.g., 1 to 5
+    userId    String
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    bookId    String
+    book      Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    createdAt DateTime @default(now())
+
+    @@unique([userId, bookId])
+}
+
+model Notification {
+    id        String   @id @default(uuid())
+    userId    String
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    title     String
+    message   String
+    isRead    Boolean  @default(false)
+    createdAt DateTime @default(now())
+}
+
+model ActivityLog {
+    id            String   @id @default(uuid())
+    userId        String
+    user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    action        String   // e.g., "BORROW_BOOK", "UPDATE_PROFILE"
+    entityId      String?  // the ID of the book or record modified
+    entityType    String?  // e.g., "Book", "Reservation"
+    details       String?
+    ipAddress     String?
+    createdAt     DateTime @default(now())
+}
+
+model ReadingHistory {
+    id             String   @id @default(uuid())
+    userId         String
+    user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    bookId         String
+    book           Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    pagesRead      Int      @default(0)
+    completionRate Float    @default(0.0)
+    lastReadDate   DateTime @default(now())
+    
+    @@unique([userId, bookId])
+}
+
+model Wishlist {
+    id        String   @id @default(uuid())
+    userId    String
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    bookId    String
+    book      Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    createdAt DateTime @default(now())
+    
+    @@unique([userId, bookId])
+}

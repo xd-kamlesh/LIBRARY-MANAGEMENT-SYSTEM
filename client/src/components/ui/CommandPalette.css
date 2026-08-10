@@ -1,0 +1,131 @@
+.cmd-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+}
+
+.cmd-container {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    padding-top: 15vh;
+    pointer-events: none;
+}
+
+.cmd-dialog {
+    width: 90%;
+    max-width: 640px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    pointer-events: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.25);
+    height: fit-content;
+    max-height: 50vh;
+}
+
+.cmd-input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.cmd-search-icon {
+    color: var(--text-secondary);
+    margin-right: 1rem;
+}
+
+.cmd-input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    outline: none;
+}
+
+.cmd-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.cmd-shortcut {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.cmd-loading-icon {
+    animation: spin 1s linear infinite;
+    color: var(--text-secondary);
+    margin-right: 1rem;
+}
+
+.cmd-results {
+    background: var(--bg-secondary);
+    overflow-y: auto;
+}
+
+.cmd-empty {
+    padding: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.cmd-list {
+    list-style: none;
+    padding: 0.5rem;
+}
+
+.cmd-list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.cmd-list-item:hover {
+    background: var(--bg-primary);
+    color: var(--accent-blue);
+}
+
+.cmd-item-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.cmd-item-type {
+    font-size: 0.75rem;
+    background: var(--bg-primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
