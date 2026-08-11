@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create a configured Axios instance
 const apiClient = axios.create({
-    baseURL: 'http://localhost:5000/api', // Adjust base URL as needed (for demo it is hardcoded)
+  baseURL: 'https://library-management-backend-8mrt.onrender.com/api',
     headers: {
         'Content-Type': 'application/json',
     },
