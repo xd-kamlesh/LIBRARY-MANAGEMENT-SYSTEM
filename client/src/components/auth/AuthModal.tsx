@@ -5,7 +5,7 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import apiClient from '../../api';
 import './AuthModal.css';
 
 interface AuthModalProps {
@@ -30,12 +30,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
+            const endpoint = isLogin ? '/auth/login' : '/auth/register';
+
             const payload = isLogin
                 ? { identifier: formData.identifier, password: formData.password }
                 : formData;
-            // Note: In development we'll proxy /api to the Express server
-            const { data } = await axios.post(`http://localhost:5000${endpoint}`, payload);
+
+            const { data } = await apiClient.post(endpoint, payload);
             login(data);
             onClose();
             navigate('/dashboard');
