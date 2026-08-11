@@ -29,16 +29,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
     }, []);
 
-    const login = (userData: User) => {
-        setUser(userData);
-        localStorage.setItem('lms_user', JSON.stringify(userData));
-        axios.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`;
+        const login = (userData: User) => {
+            setUser(userData);
+            localStorage.setItem('lms_user', JSON.stringify(userData));
+            localStorage.setItem('token', userData.token);
+            localStorage.setItem('user', JSON.stringify(userData));
+        };
     };
 
     const logout = () => {
         setUser(null);
         localStorage.removeItem('lms_user');
-        delete axios.defaults.headers.common['Authorization'];
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
     };
 
     return (
